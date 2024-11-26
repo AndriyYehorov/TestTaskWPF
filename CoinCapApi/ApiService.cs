@@ -9,20 +9,34 @@ namespace CoinCapApi
     {
         private const string url = "https://api.coincap.io/v2/";
 
-        public async Task<ApiResponse> GetCoinsAsync(int count)
+        private readonly HttpClient client = new();
+
+        public async Task<CoinsResponse> GetCoinsAsync(int count)
         {
             string path = $"{url}assets?limit={count}";
-
-            using HttpClient client = new HttpClient();
 
             HttpResponseMessage response = await client.GetAsync(path);
 
             if (!response.IsSuccessStatusCode)
             {
-                return new ApiResponse();
+                return new CoinsResponse();
             }          
 
-            return await response.Content.ReadFromJsonAsync<ApiResponse>() ?? new ApiResponse();
+            return await response.Content.ReadFromJsonAsync<CoinsResponse>() ?? new CoinsResponse();
+        }
+
+        public async Task<MarketsResponse> GetMarketsAsync(string coinId, int count)
+        {
+            string path = $"{url}assets/{coinId}/markets?limit={count}";
+
+            HttpResponseMessage response = await client.GetAsync(path);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return new MarketsResponse();
+            }
+
+            return await response.Content.ReadFromJsonAsync<MarketsResponse>() ?? new MarketsResponse();
         }
     }
 }

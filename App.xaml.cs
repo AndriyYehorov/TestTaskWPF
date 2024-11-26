@@ -1,11 +1,6 @@
 ﻿using CoinCapApi;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Configuration;
-using System.Data;
-using System.IO;
 using System.Windows;
-using TestTaskWPF;
 
 namespace TestTaskWPF
 {
@@ -18,7 +13,7 @@ namespace TestTaskWPF
 
         public App()
         {
-            var serviceCollection = new ServiceCollection();
+            ServiceCollection serviceCollection = new();
             ConfigureServices(serviceCollection);
             _serviceProvider = serviceCollection.BuildServiceProvider();
         }

@@ -32,6 +32,13 @@ namespace TestTaskWPF.Pages
             var apiResponse = await ApiService.GetCoinsAsync(coinsCount);
 
             CoinViewModel.Coins = new ObservableCollection<Coin>(apiResponse.Data);
-        }        
+        }   
+
+        private void CoinsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var detailsPage = new DetailsPage(CoinsListView.SelectedItem as Coin, ApiService);
+
+            NavigationService.Navigate(detailsPage);
+        }
     }
 }

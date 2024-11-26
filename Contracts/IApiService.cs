@@ -4,6 +4,8 @@ namespace TestTaskWPF
 {
     public interface IApiService
     {
-        public Task<ApiResponse> GetCoinsAsync(int count);
+        public Task<CoinsResponse> GetCoinsAsync(int count);
+
+        public Task<MarketsResponse> GetMarketsAsync(string coinId, int count);
     }
 }
