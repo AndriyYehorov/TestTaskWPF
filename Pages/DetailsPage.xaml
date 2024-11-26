@@ -14,45 +14,45 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel Margin="20">
             
-                <Button Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click"></Button>
+                <Button Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click"></Button>
             
-                <TextBlock Text="Деталі криптовалюти" FontWeight="Bold" FontSize="20" Margin="0,0,0,20"/>
+                <TextBlock Text="Details" FontWeight="Bold" FontSize="20" Margin="0,0,0,20"/>
 
-                <TextBlock Text="Ідентифікатор:"/>
+                <TextBlock Text="Id:"/>
                 <TextBlock Text="{Binding CoinDetails.Id}" FontWeight="Bold" Margin="0,0,0,10"/>
 
-                <TextBlock Text="Ранг:"/>
+                <TextBlock Text="Rank:"/>
                 <TextBlock Text="{Binding CoinDetails.Rank}" FontWeight="Bold" Margin="0,0,0,10"/>
 
-                <TextBlock Text="Символ:"/>
+                <TextBlock Text="Symbol:"/>
                 <TextBlock Text="{Binding CoinDetails.Symbol}" FontWeight="Bold" Margin="0,0,0,10"/>
 
-                <TextBlock Text="Назва:"/>
+                <TextBlock Text="Name:"/>
                 <TextBlock Text="{Binding CoinDetails.Name}" FontWeight="Bold" Margin="0,0,0,10"/>
 
-                <TextBlock Text="Обсяг постачання:"/>
-                <TextBlock Text="{Binding CoinDetails.Suply}" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBlock Text="Supply:"/>
+                <TextBlock Text="{Binding CoinDetails.Supply}" FontWeight="Bold" Margin="0,0,0,10"/>
 
-                <TextBlock Text="Максимальний обсяг постачання:"/>
-                <TextBlock Text="{Binding CoinDetails.MaxSuply}" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBlock Text="Max Supply:"/>
+                <TextBlock Text="{Binding CoinDetails.MaxSupply}" FontWeight="Bold" Margin="0,0,0,10"/>
 
-                <TextBlock Text="Ринкова капіталізація (USD):"/>
+                <TextBlock Text="Market Cap (USD):"/>
                 <TextBlock Text="{Binding CoinDetails.MarketCapUsd}" FontWeight="Bold" Margin="0,0,0,10"/>
 
-                <TextBlock Text="Ціна (USD):"/>
+                <TextBlock Text="Price (USD):"/>
                 <TextBlock Text="{Binding CoinDetails.PriceUsd}" FontWeight="Bold" Margin="0,0,0,10"/>
 
-                <TextBlock Text="Зміна за 24 год. (%):"/>
+                <TextBlock Text="Change 24 Hr (%):"/>
                 <TextBlock Text="{Binding CoinDetails.ChangePercent24Hr}" FontWeight="Bold" Margin="0,0,0,10"/>
 
-                <TextBlock Text="Маркети:"/>
+                <TextBlock Text="Markets:"/>
                 <ListView x:Name="CoinsListView" ItemsSource="{Binding Markets}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Назва обміннику" DisplayMemberBinding="{Binding ExchangeId}" Width="150"/>
-                            <GridViewColumn Header="Валюта для покупки" DisplayMemberBinding="{Binding BaseId}" Width="100"/>
-                            <GridViewColumn Header="Валюта для обміну" DisplayMemberBinding="{Binding QuoteId}" Width="100"/>                            
-                            <GridViewColumn Header="Ціна (USD)" DisplayMemberBinding="{Binding PriceUsd}" Width="150"/>
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ExchangeId}" Width="150"/>
+                            <GridViewColumn Header="Base" DisplayMemberBinding="{Binding BaseId}" Width="100"/>
+                            <GridViewColumn Header="Quote" DisplayMemberBinding="{Binding QuoteId}" Width="100"/>                            
+                            <GridViewColumn Header="Price (USD)" DisplayMemberBinding="{Binding PriceUsd}" Width="150"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

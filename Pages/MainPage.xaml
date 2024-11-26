@@ -12,14 +12,29 @@
       Loaded="Page_Loaded">
     
     <Grid>
-        <ListView x:Name="CoinsListView" ItemsSource="{Binding Coins}" SelectionChanged="CoinsListView_SelectionChanged">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />            
+            <RowDefinition Height="*" />            
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+            <Label Content="Пошук: " HorizontalAlignment="Left"/>
+            <TextBox x:Name="SearchTextBox"
+                 Margin="10"
+                 Width="200"
+                 VerticalAlignment="Top" TextChanged="SearchTextBox_TextChanged" HorizontalAlignment="Center" />
+        </StackPanel>
+
+        <ListView x:Name="CoinsListView" ItemsSource="{Binding Coins}" 
+                  SelectionChanged="CoinsListView_SelectionChanged"
+                  Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Ранг" DisplayMemberBinding="{Binding Rank}" Width="50"/>
-                    <GridViewColumn Header="Символ" DisplayMemberBinding="{Binding Symbol}" Width="100"/>
-                    <GridViewColumn Header="Ім'я" DisplayMemberBinding="{Binding Name}" Width="150"/>
+                    <GridViewColumn Header="Rank" DisplayMemberBinding="{Binding Rank}" Width="50"/>
+                    <GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Symbol}" Width="100"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="150"/>
                 </GridView>
             </ListView.View>
-        </ListView>
+        </ListView>        
     </Grid>
 </Page>

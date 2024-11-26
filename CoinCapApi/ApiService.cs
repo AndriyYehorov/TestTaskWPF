@@ -25,6 +25,20 @@ namespace CoinCapApi
             return await response.Content.ReadFromJsonAsync<CoinsResponse>() ?? new CoinsResponse();
         }
 
+        public async Task<CoinsResponse> GetCoinsByNameAsync(string name, int count)
+        {
+            string path = $"{url}assets?limit={count}&search={name}";
+
+            HttpResponseMessage response = await client.GetAsync(path);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return new CoinsResponse();
+            }
+
+            return await response.Content.ReadFromJsonAsync<CoinsResponse>() ?? new CoinsResponse();
+        }
+
         public async Task<MarketsResponse> GetMarketsAsync(string coinId, int count)
         {
             string path = $"{url}assets/{coinId}/markets?limit={count}";
@@ -37,6 +51,6 @@ namespace CoinCapApi
             }
 
             return await response.Content.ReadFromJsonAsync<MarketsResponse>() ?? new MarketsResponse();
-        }
+        }               
     }
 }

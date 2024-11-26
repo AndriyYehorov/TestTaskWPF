@@ -29,9 +29,16 @@ namespace TestTaskWPF.Pages
         
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            var apiResponse = await ApiService.GetCoinsAsync(coinsCount);
+            try
+            {
+                var apiResponse = await ApiService.GetCoinsAsync(coinsCount);
 
-            CoinViewModel.Coins = new ObservableCollection<Coin>(apiResponse.Data);
+                CoinViewModel.Coins = new ObservableCollection<Coin>(apiResponse.Data);
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show($"An error occurred while downloading data: {ex.Message}");
+            }
         }   
 
         private void CoinsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -39,6 +46,20 @@ namespace TestTaskWPF.Pages
             var detailsPage = new DetailsPage(CoinsListView.SelectedItem as Coin, ApiService);
 
             NavigationService.Navigate(detailsPage);
+        }
+
+        private async void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                var apiResponse = await ApiService.GetCoinsByNameAsync(SearchTextBox.Text, coinsCount);
+
+                CoinViewModel.Coins = new ObservableCollection<Coin>(apiResponse.Data);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while downloading data: {ex.Message}");
+            }
         }
     }
 }
