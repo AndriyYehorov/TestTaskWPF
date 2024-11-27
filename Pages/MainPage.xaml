@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-            <Label Content="Пошук: " HorizontalAlignment="Left"/>
+            <Label Content="Search: " HorizontalAlignment="Left"/>
             <TextBox x:Name="SearchTextBox"
                  Margin="10"
                  Width="200"
